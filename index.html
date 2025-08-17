@@ -1,0 +1,1332 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiyu Lin | Personal Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F8A1D1',
+                        secondary: '#E077BB9',
+                        dark: '#B55E8D',
+                        light: '#FFF5FA',
+                        gray: {
+                            100: '#F7F8FA',
+                            200: '#FADDEE',
+                            300: '#F2BBD9',
+                            400: '#D98AB7',
+                            500: '#B55E8D',
+                            600: '#7A3E5A',
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .timeline-line {
+                @apply absolute left-5 top-0 bottom-0 w-0.5 bg-primary/30;
+            }
+            .timeline-dot {
+                @apply absolute left-5 top-5 w-3 h-3 -ml-1.5 rounded-full bg-primary;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-inter text-gray-600 bg-light overflow-x-hidden">
+    <!-- 语言切换按钮 -->
+    <div class="fixed top-4 right-4 z-50 flex gap-2">
+        <button id="lang-en" class="px-3 py-1 bg-primary text-white rounded-full text-sm font-medium transition-all">EN</button>
+        <button id="lang-zh" class="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-sm font-medium transition-all">中</button>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="#hero" class="text-2xl font-bold text-white text-shadow">Shiyu Lin</a>
+                
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-white hover:text-secondary transition-colors en">About</a>
+                    <a href="#experience" class="text-white hover:text-secondary transition-colors en">Experience</a>
+                    <a href="#education" class="text-white hover:text-secondary transition-colors en">Education</a>
+                    <a href="#certifications" class="text-white hover:text-secondary transition-colors en">Certificates</a>
+                    <a href="#portfolio" class="text-white hover:text-secondary transition-colors en">Portfolio</a>
+                    <a href="#contact" class="text-white hover:text-secondary transition-colors en">Contact</a>
+                    
+                    <a href="#about" class="text-white hover:text-secondary transition-colors zh hidden">关于我</a>
+                    <a href="#experience" class="text-white hover:text-secondary transition-colors zh hidden">经历</a>
+                    <a href="#education" class="text-white hover:text-secondary transition-colors zh hidden">教育背景</a>
+                    <a href="#certifications" class="text-white hover:text-secondary transition-colors zh hidden">证书</a>
+                    <a href="#portfolio" class="text-white hover:text-secondary transition-colors zh hidden">作品集</a>
+                    <a href="#contact" class="text-white hover:text-secondary transition-colors zh hidden">联系方式</a>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-white text-2xl">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#about" class="py-2 text-gray-600 hover:text-primary transition-colors en">About</a>
+                <a href="#experience" class="py-2 text-gray-600 hover:text-primary transition-colors en">Work Experience</a>
+                <a href="#education" class="py-2 text-gray-600 hover:text-primary transition-colors en">Education</a>
+                <a href="#certifications" class="py-2 text-gray-600 hover:text-primary transition-colors en">Certifications</a>
+                <a href="#portfolio" class="py-2 text-gray-600 hover:text-primary transition-colors en">Portfolio</a>
+                <a href="#contact" class="py-2 text-gray-600 hover:text-primary transition-colors en">Contact</a>
+                
+                <a href="#about" class="py-2 text-gray-600 hover:text-primary transition-colors zh hidden">关于我</a>
+                <a href="#experience" class="py-2 text-gray-600 hover:text-primary transition-colors zh hidden">工作经历</a>
+                <a href="#education" class="py-2 text-gray-600 hover:text-primary transition-colors zh hidden">教育背景</a>
+                <a href="#certifications" class="py-2 text-gray-600 hover:text-primary transition-colors zh hidden">证书</a>
+                <a href="#portfolio" class="py-2 text-gray-600 hover:text-primary transition-colors zh hidden">作品集</a>
+                <a href="#contact" class="py-2 text-gray-600 hover:text-primary transition-colors zh hidden">联系方式</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首屏 -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="Home Page.png" alt="Campus background" class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-dark/80"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold text-white leading-tight mb-4">
+                <span class="en">Shiyu Lin</span>
+                <span class="zh hidden">林诗钰</span>
+            </h1>
+            
+            <p class="text-[clamp(1rem,3vw,1.5rem)] text-white/90 mb-8 max-w-2xl mx-auto en">
+                Brand Strategy · Consumer Insight · Market Research
+            </p>
+            <p class="text-[clamp(1rem,3vw,1.5rem)] text-white/90 mb-8 max-w-2xl mx-auto zh hidden">
+                品牌策略 · 消费者洞察 · 市场研究
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#experience" class="px-8 py-3 bg-white text-primary font-medium rounded-full hover:bg-opacity-90 transition-all transform hover:-translate-y-1 shadow-lg">
+                    <span class="en">View My Experience</span>
+                    <span class="zh hidden">查看我的经历</span>
+                </a>
+                <a href="#contact" class="px-8 py-3 bg-transparent border-2 border-white text-white font-medium rounded-full hover:bg-white/10 transition-all transform hover:-translate-y-1">
+                    <span class="en">Contact Me</span>
+                    <span class="zh hidden">联系我</span>
+                </a>
+                <a href="#" class="px-8 py-3 bg-secondary text-white font-medium rounded-full hover:bg-opacity-90 transition-all transform hover:-translate-y-1 shadow-lg">
+                    <span class="en">Download Resume</span>
+                    <span class="zh hidden">下载简历</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-0 right-0 text-center">
+            <a href="#about" class="text-white animate-bounce inline-block">
+                <i class="fa fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 推荐语 -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 en">Testimonials</h2>
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 zh hidden">推荐语</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-2xl shadow-md relative">
+                    <i class="fa fa-quote-left text-4xl text-primary/20 absolute top-6 left-6"></i>
+                    <p class="text-gray-600 text-lg italic mb-6 pl-6 en">
+                        "Shiyu demonstrated exceptional analytical skills and strategic thinking during her internship. Her market research reports were invaluable to our team's decision-making process."
+                    </p>
+                    <p class="text-gray-600 text-lg italic mb-6 pl-6 zh hidden">"林诗钰在实习期间展现了卓越的分析能力和战略思维。她的市场研究报告对我们团队的决策过程非常宝贵。"</p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/id/1005/100/100" alt="Advisor" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">Sarah Johnson</p>
+                            <p class="text-gray-500 text-sm">Senior Consultant, Capgemini</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="About Me photo.png" alt="Shiyu Lin" class="w-full h-auto rounded-2xl shadow-xl object-cover max-w-md mx-auto">
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-6 en">About Me</h2>
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-6 zh hidden">关于我</h2>
+                    <div class="w-20 h-1 bg-primary mb-8"></div>
+                    
+                    <p class="text-gray-600 mb-6 text-lg en">
+                        Currently pursuing a Bachelor's degree in Marketing, with expertise in brand strategy, consumer insights, and marketing data analysis.
+                    </p>
+                    <p class="text-gray-600 mb-6 text-lg zh hidden">
+                        目前攻读市场营销学士学位，专长于品牌策略、消费者洞察和营销数据分析。
+                    </p>
+                    
+                    <p class="text-gray-600 mb-6 text-lg en">
+                        I have cross-cultural learning and work experience in China and the United States, which has equipped me with a global perspective on market trends and consumer behavior.
+                    </p>
+                    <p class="text-gray-600 mb-6 text-lg zh hidden">
+                        拥有中国和美国的跨文化学习和工作背景，使我对市场趋势和消费者行为具有全球视野。
+                    </p>
+                    
+                    <p class="text-gray-600 mb-8 text-lg en">
+                        I am particularly passionate about market research and brand communication, constantly seeking innovative ways to connect brands with their target audiences.
+                    </p>
+                    <p class="text-gray-600 mb-8 text-lg zh hidden">
+                        对市场研究和品牌传播特别有热情，不断寻求创新方式将品牌与目标受众联系起来。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2 en">Expertise</h3>
+                            <h3 class="font-semibold text-gray-800 mb-2 zh hidden">专业技能</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fa fa-check text-primary mr-2"></i>
+                                    <span class="en">Brand Strategy</span>
+                                    <span class="zh hidden">品牌策略</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fa fa-check text-primary mr-2"></i>
+                                    <span class="en">Consumer Insight</span>
+                                    <span class="zh hidden">消费者洞察</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fa fa-check text-primary mr-2"></i>
+                                    <span class="en">Market Research</span>
+                                    <span class="zh hidden">市场研究</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2 en">Tools</h3>
+                            <h3 class="font-semibold text-gray-800 mb-2 zh hidden">工具</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fa fa-check text-primary mr-2"></i>
+                                    <span class="en">Google Analytics</span>
+                                    <span class="zh hidden">谷歌分析</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fa fa-check text-primary mr-2"></i>
+                                    <span class="en">Bloomberg Terminal</span>
+                                    <span class="zh hidden">彭博终端</span>
+                                </li>
+                                <li class="flex items-center text-gray-600">
+                                    <i class="fa fa-check text-primary mr-2"></i>
+                                    <span class="en">Adobe Creative Suite</span>
+                                    <span class="zh hidden">Adobe创意套件</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 经历 -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 en">Work Experience</h2>
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 zh hidden">工作经历</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+            
+            <!-- 时间轴设计 -->
+            <div class="relative max-w-3xl mx-auto">
+                <div class="timeline-line"></div>
+                
+                <!-- 实习经历 1 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
+                            <div class="flex items-center mb-4 sm:mb-0">
+                                <img src="Capgemini.png" alt="Capgemini" class="w-12 h-12 mr-4 rounded">
+                                <div>
+                                    <h3 class="font-bold text-gray-800 en">Business Analysis Consultant (Internship)</h3>
+                                    <h3 class="font-bold text-gray-800 zh hidden">商业分析顾问（实习）</h3>
+                                    <p class="text-primary font-medium">Capgemini</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-500">July,2025 – Sept,2025</p>
+                        </div>
+                        
+                        <div class="experience-content hidden">
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Key Responsibilities:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">主要任务：</h4>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 en">
+                                <li>Supported consultant team in market research and data compilation</li>
+                                <li>Assisted in writing presentations and client proposals</li>
+                                <li>Analyzed industry trends and provided initial insights to the project team</li>
+                            </ul>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 zh hidden">
+                                <li>支援顾问团队进行市场研究与数据整理</li>
+                                <li>协助撰写简报与客户方案</li>
+                                <li>分析产业趋势，提供初步洞察给专案团队</li>
+                            </ul>
+                            
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Achievements:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">成就摘要：</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 en">
+                                <li>Completed financial system analysis report for FMCG brand</li>
+                                <li>Wrote 175-page digital transformation plan</li>
+                                <li>Brought 50% efficiency improvement and saved approximately 34% of costs for internal functions</li>
+                            </ul>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 zh hidden">
+                                <li>为快消品品牌完成财务系统分析报告</li>
+                                <li>撰写数字化转型方案175页</li>
+                                <li>为该客户公司带来50%的效率提升，节约约34%的成本用于内部职能</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="mt-4 text-primary font-medium flex items-center toggle-details">
+                            <span class="en">View Details</span>
+                            <span class="zh hidden">查看详情</span>
+                            <i class="fa fa-chevron-down ml-2 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 实习经历 2 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
+                            <div class="flex items-center mb-4 sm:mb-0">
+                                <img src="JBJ.png" alt="JBJ Soul Kitchen" class="w-12 h-12 mr-4 rounded">
+                                <div>
+                                    <h3 class="font-bold text-gray-800 en">Marketing Communication Position (Part-time)</h3>
+                                    <h3 class="font-bold text-gray-800 zh hidden">营销传播专员（兼职）</h3>
+                                    <p class="text-primary font-medium">JBJ Soul Kitchen</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-500">Mar,2025 – May,2025</p>
+                        </div>
+                        
+                        <div class="experience-content hidden">
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Key Responsibilities:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">主要任务：</h4>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 en">
+                                <li>Conducted market research and data analysis</li>
+                                <li>Analyzed company operation issues</li>
+                                <li>Proposed communication strategies and consumer insights</li>
+                            </ul>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 zh hidden">
+                                <li>进行市场调查数据</li>
+                                <li>分析公司运营问题</li>
+                                <li>提出传播策略与消费者洞察</li>
+                            </ul>
+                            
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Achievements:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">成就摘要：</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 en">
+                                <li>Completed brand communication plan and assisted in implementation</li>
+                                <li>Increased social media engagement rate by 25%</li>
+                            </ul>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 zh hidden">
+                                <li>完成品牌传播方案并协助执行</li>
+                                <li>提升社群互动率 25%</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="mt-4 text-primary font-medium flex items-center toggle-details">
+                            <span class="en">View Details</span>
+                            <span class="zh hidden">查看详情</span>
+                            <i class="fa fa-chevron-down ml-2 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 实习经历 3 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
+                            <div class="flex items-center mb-4 sm:mb-0">
+                                <img src="Publicis logo.png" alt="Publicis Groupe" class="w-12 h-12 mr-4 rounded">
+                                <div>
+                                    <h3 class="font-bold text-gray-800 en">Account Executive (Internship)</h3>
+                                    <h3 class="font-bold text-gray-800 zh hidden">客户执行（实习）</h3>
+                                    <p class="text-primary font-medium">Publicis Groupe</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-500">June,2024 – Sept,2024</p>
+                        </div>
+                        
+                        <div class="experience-content hidden">
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Key Responsibilities:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">主要任务：</h4>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 en">
+                                <li>Conducted product and user research for brands</li>
+                                <li>Responsible for data analysis and assisting with advertising placement</li>
+                                <li>Created advertising materials and event visuals</li>
+                            </ul>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 zh hidden">
+                                <li>对品牌进行产品与用户研究，收集并梳理市场调查数据</li>
+                                <li>负责数据分析，协助广告投放与消费者洞察</li>
+                                <li>制作广告素材与活动视觉稿</li>
+                            </ul>
+                            
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Achievements:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">成就摘要：</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 en">
+                                <li>Created communication plans for 5 Fortune 500 brands</li>
+                                <li>Produced over 200 advertising placements and location plans</li>
+                                <li>Increased conversion rate by 30% for clients</li>
+                            </ul>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 zh hidden">
+                                <li>5个国际五百强品牌的传播方案报告</li>
+                                <li>广告投放和位点示意200余份</li>
+                                <li>为该客户公司带来30%的转化率</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="mt-4 text-primary font-medium flex items-center toggle-details">
+                            <span class="en">View Details</span>
+                            <span class="zh hidden">查看详情</span>
+                            <i class="fa fa-chevron-down ml-2 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 新增实习经历 4 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
+                            <div class="flex items-center mb-4 sm:mb-0">
+                                <img src="Fushi logo.png" alt="L'Oreal" class="w-12 h-12 mr-4 rounded">
+                                <div>
+                                    <h3 class="font-bold text-gray-800 en">New Media Editor(Internship)</h3>
+                                    <h3 class="font-bold text-gray-800 zh hidden">新媒体运营(实习）</h3>
+                                    <p class="text-primary font-medium">Shanghai Fushi Network Technology</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-500">Aug,2023 – Sept,2023</p>
+                        </div>
+                        
+                        <div class="experience-content hidden">
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Key Responsibilities:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">主要任务：</h4>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 en">
+                                <li>Assist the operation team in planning content for social platforms</li>
+                                <li>Produce visual and data reports</li>
+                            </ul>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 zh hidden">
+                                <li>協助運營團隊策劃社交平台內容</li>
+                                <li>製作視覺與數據報告</li>
+                            </ul>
+                            
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Achievements:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">成就摘要：</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 en">
+                                <li>Independently responsible for several new media tweets, each with over ten thousand views</li>
+                                <li>The designed visual data report was used by the supervisor for the client briefing</li>
+                                <li>Contributed to market entry strategy that increased brand awareness by 15%</li>
+                            </ul>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 zh hidden">
+                                <li>獨立負責数篇新媒體推文，單篇閱讀量破萬</li>
+                                <li>設計的視覺數據報告被主管用於客戶簡報</li>
+                                <li>参与市场进入策略制定，提升品牌知名度15%</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="mt-4 text-primary font-medium flex items-center toggle-details">
+                            <span class="en">View Details</span>
+                            <span class="zh hidden">查看详情</span>
+                            <i class="fa fa-chevron-down ml-2 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 新增实习经历 5 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
+                            <div class="flex items-center mb-4 sm:mb-0">
+                                <img src="Kean.png" alt="Kean" class="w-12 h-12 mr-4 rounded">
+                                <div>
+                                    <h3 class="font-bold text-gray-800 en">Operating Assistant(Part-time)</h3>
+</h3>
+                                    <h3 class="font-bold text-gray-800 zh hidden">运营助理(兼职)</h3>
+                                    <p class="text-primary font-medium">Wenzhou-kean University Alumni Association</p>
+</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-500">Oct,2024 – Oct,2025</p>
+                        </div>
+                        
+                        <div class="experience-content hidden">
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Key Responsibilities:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">主要任务：</h4>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 en">
+                                <li>Assisted in managing social media accounts and content creation</li>
+                                <li>Record the stories related to alumni, organize and post them on the official account</li>
+                                <li>Video editing and poster design</li>
+                            </ul>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 zh hidden">
+                                <li>协助管理社交媒体账号和内容创作</li>
+                                <li>記錄校友相關故事，整理並發布於官方帳號</li>
+                                <li>视频剪辑和海报设计</li>
+                            </ul>
+                            
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Achievements:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">成就摘要：</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 en">
+                                <li>Responsible for content marketing, with a single tweet receiving 1,000 clicks</li>
+                                <li>The video completion rate is nearly 100%</li>
+                                <li>Assist in the full promotion of alumni association activities to enhance community interaction</li>
+                            </ul>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 zh hidden">
+                                <li>負責內容行銷，單篇推文點擊量達 1000+</li>
+                                <li>视频完播率近100%</li>
+                                <li>協助校友會活動的全程宣傳，提升互動度</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="mt-4 text-primary font-medium flex items-center toggle-details">
+                            <span class="en">View Details</span>
+                            <span class="zh hidden">查看详情</span>
+                            <i class="fa fa-chevron-down ml-2 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 新增实习经历 6 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
+                            <div class="flex items-center mb-4 sm:mb-0">
+                                <img src="Kean.png" alt="Kean" class="w-12 h-12 mr-4 rounded">
+                                <div>
+                                    <h3 class="font-bold text-gray-800 en">Planning Assistant(Part-time)</h3>
+                                    <h3 class="font-bold text-gray-800 zh hidden">策划助理（兼职）</h3>
+                                    <p class="text-primary font-medium">Student Affairs Department of Wenzhou-Kean University</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-500">Mar,2023 – Jul,2023</p>
+                        </div>
+                        
+                        <div class="experience-content hidden">
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Key Responsibilities:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">主要任务：</h4>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 en">
+                                <li>Be responsible for the design of activity plans</li>
+                                <li>Assist teachers and students in solving problems related to activity planning and processes</li>
+                                <li>Coordinate team resources to ensure the smooth implementation of the event</li>
+                            </ul>
+                            <ul class="list-disc pl-5 mb-4 text-gray-600 space-y-1 zh hidden">
+                                <li>負責活動方案設計，協助教師和學生解決活動策劃與流程問題</li>
+                                <li>協調團隊資源，確保活動順利落地</li>
+                            </ul>
+                            
+                            <h4 class="font-semibold text-gray-800 mb-2 en">Achievements:</h4>
+                            <h4 class="font-semibold text-gray-800 mb-2 zh hidden">成就摘要：</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 en">
+                                <li>Organized 10 campus activities</li>
+                                <li>With the enthusiastic participation of the school students, 2,000 design drafts were collected</li>
+                                <li>Assist in creating cross-organizational communication activities to enhance students' sense of participation</li>
+                            </ul>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1 zh hidden">
+                                <li>組織超過10場校園活動</li>
+                                <li>获得校学生的踊跃参与，收集設計稿件 2000+</li>
+                                <li>協助打造跨组织交流活動，提升學生參與感</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="mt-4 text-primary font-medium flex items-center toggle-details">
+                            <span class="en">View Details</span>
+                            <span class="zh hidden">查看详情</span>
+                            <i class="fa fa-chevron-down ml-2 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section id="education" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 en">Education</h2>
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 zh hidden">教育背景</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- 温州肯恩大学 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="h-48 overflow-hidden">
+                        <img src="wenzhou.png" alt="Wenzhou-Kean University" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-gray-800 text-xl mb-2 en">Wenzhou-Kean University</h3>
+                    </h3>
+                        <h3 class="font-bold text-gray-800 text-xl mb-2 zh hidden">温州肯恩大学</h3>
+                        <p class="text-primary font-medium mb-3">B.S. Marketing | 2022 – 2026</p>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-gray-600">CGPA</span>
+                                <span class="font-medium">3.84</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 96%"></div>
+                            </div>
+                        </div>
+                        
+                        <h4 class="font-semibold text-gray-800 mb-2 en">Honors:</h4>
+                        <h4 class="font-semibold text-gray-800 mb-2 zh hidden">荣誉：</h4>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1 en">
+                            <li>Dean's List</li>
+                            <li>Inspiration and Innovation Scholarship (2024/2025)</li>
+                            <li>Study Abroad Scholarship (2025)</li>
+                            <li>Dean's Scholarship Second Award (2023/2024)</li>
+                        </ul>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-1 zh">
+                            <li>院长名单</li>
+                            <li>启智创新奖学金(2024/2025)</li>
+                            <li>海外学习奖学金(2025)</li>
+                            <li>院长奖学金二等奖(2023/2024)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 美国肯恩大学交换 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="h-48 overflow-hidden">
+                        <img src="KU.png" alt="Kean University" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-gray-800 text-xl mb-2 en">Kean University, USA</h3>
+                    </h3>
+                        <h3 class="font-bold text-gray-800 text-xl mb-2 zh hidden">美国肯恩大学</h3>
+                        <p class="text-primary font-medium mb-3">Exchange Student | 2025</p>
+
+                       <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-gray-600">Term GPA</span>
+                                <span class="font-medium">4.00</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-4 en">
+                            Studied marketing and business courses in an international environment, gaining cross-cultural communication skills and global business perspectives.
+                        </p>
+                        <p class="text-gray-600 mb-4 zh hidden">
+                            在国际环境中学习市场营销和商业课程，获得跨文化沟通能力和全球商业视野。
+                        </p>
+                        
+                        <div class="flex justify-center">
+                            <img src="exchange.png" alt="Campus exchange" class="h-32 rounded shadow">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 学术参与 -->
+            <div class="mt-16 max-w-5xl mx-auto">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 text-center en">Academic Participation</h3>
+                <h3 class="text-xl font-bold text-gray-800 mb-6 text-center zh hidden">学术参与</h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-center">
+                        <img src="icftba.png" alt="ICFTBA 2024" class="w-full h-32 object-cover rounded mb-3 mx-auto">
+                        <p class="text-gray-700 font-medium">ICFTBA 2024</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-center">
+                        <img src="informs.png" alt="INFORMS" class="w-full h-32 object-cover rounded mb-3 mx-auto">
+                        <p class="text-gray-700 font-medium">INFORMS Membership</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-center">
+                        <img src="cathay.png" alt="Cathay Move" class="w-full h-32 object-cover rounded mb-3 mx-auto">
+                        <p class="text-gray-700 font-medium">Cathay Move beyond Competition</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-center">
+                        <img src="Green.png" alt="Cathay Move" class="w-full h-32 object-cover rounded mb-3 mx-auto">
+                        <p class="text-gray-700 font-medium">Green Sustainability Idea and Initiative Competition</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-center">
+                        <img src="wkuRDs.png" alt="Research Days" class="w-full h-32 object-cover rounded mb-3 mx-auto">
+                        <p class="text-gray-700 font-medium">WKU Research Days</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-center">
+                        <img src="kuRDs.png" alt="Research Days" class="w-full h-32 object-cover rounded mb-3 mx-auto">
+                        <p class="text-gray-700 font-medium">Kean University Research Days</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow text-center">
+                        <img src="camp.png" alt="Research Days" class="w-full h-32 object-cover rounded mb-3 mx-auto">
+                        <p class="text-gray-700 font-medium">Innovation and Entrepreneurship Research Camp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 证照与认证 -->
+    <section id="certifications" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 en">Certificates</h2>
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 zh hidden">证书</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+            
+            <!-- 可滚动证书画廊 -->
+            <div class="relative">
+                <div class="overflow-x-auto scrollbar-hide pb-8">
+                    <div class="flex space-x-6 min-w-max px-4">
+                        <!-- 证书 1 -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden w-72 flex-shrink-0 hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300">
+                            <div class="h-56 bg-primary/10 flex items-center justify-center">
+                                <img src="Ads.png" alt="Google Ads" class="w-full h-full object-cover rounded mb-3 mx-auto">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="font-bold text-gray-800 mb-2">Google Ads Search Certification</h3>
+                                <p class="text-gray-500 text-sm mb-3">Google</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-gray-400">Issued: 2024</span>
+                                    <a href="#" class="text-primary text-sm font-medium">View <i class="fa fa-external-link ml-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 证书 2 -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden w-72 flex-shrink-0 hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300">
+                            <div class="h-56 bg-primary/10 flex items-center justify-center">
+                                 <img src="bmc.png" alt="BMC" class="w-full h-full object-cover rounded mb-3 mx-auto">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="font-bold text-gray-800 mb-2">Bloomberg Market Concepts (BMC)</h3>
+                                <p class="text-gray-500 text-sm mb-3">Bloomberg</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-gray-400">Issued: 2024</span>
+                                    <a href="#" class="text-primary text-sm font-medium">View <i class="fa fa-external-link ml-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 证书 3 -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden w-72 flex-shrink-0 hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300">
+                            <div class="h-56 bg-primary/10 flex items-center justify-center">
+                                <img src="ASU.png" alt="Project management" class="w-full h-full object-cover rounded mb-3 mx-auto">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="font-bold text-gray-800 mb-2">Project Management Basics</h3>
+                                <p class="text-gray-500 text-sm mb-3">Arizona State University</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-gray-400">Issued: 2024</span>
+                                    <a href="#" class="text-primary text-sm font-medium">View <i class="fa fa-external-link ml-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 证书 4 -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden w-72 flex-shrink-0 hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300">
+                            <div class="h-56 bg-primary/10 flex items-center justify-center">
+                                <img src="mail.png" alt="Project management" class="w-full h-full object-cover rounded mb-3 mx-auto">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="font-bold text-gray-800 mb-2">Applied Marketing Mail</h3>
+                                <p class="text-gray-500 text-sm mb-3">Direct Effect</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-gray-400">Issued: 2024</span>
+                                    <a href="#" class="text-primary text-sm font-medium">View <i class="fa fa-external-link ml-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 证书 5 -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden w-72 flex-shrink-0 hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300">
+                            <div class="h-56 bg-primary/10 flex items-center justify-center">
+                                <img src="ai.png" alt="Project management" class="w-full h-full object-cover rounded mb-3 mx-auto">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="font-bold text-gray-800 mb-2">Ethics of AI</h3>
+                                <p class="text-gray-500 text-sm mb-3">University of Helsinki</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-gray-400">Issued: 2023</span>
+                                    <a href="#" class="text-primary text-sm font-medium">View <i class="fa fa-external-link ml-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                      <!-- 证书 6 -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden w-72 flex-shrink-0 hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300">
+                            <div class="h-56 bg-primary/10 flex items-center justify-center">
+                                <img src="fight.png" alt="Project management" class="w-full h-full object-cover rounded mb-3 mx-auto">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="font-bold text-gray-800 mb-2">FIGHTING INFLAMMATION</h3>
+                                <p class="text-gray-500 text-sm mb-3">Harvard University</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-gray-400">Issued: 2023</span>
+                                    <a href="#" class="text-primary text-sm font-medium">View <i class="fa fa-external-link ml-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                       <!-- 证书 7 -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden w-72 flex-shrink-0 hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300">
+                            <div class="h-56 bg-primary/10 flex items-center justify-center">
+                                <img src="6week.png" alt="Project management" class="w-full h-full object-cover rounded mb-3 mx-auto">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="font-bold text-gray-800 mb-2">Knowledge of Healthy Eating</h3>
+                                <p class="text-gray-500 text-sm mb-3">Harvard University</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-gray-400">Issued: 2023</span>
+                                    <a href="#" class="text-primary text-sm font-medium">View <i class="fa fa-external-link ml-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 证书 8 -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden w-72 flex-shrink-0 hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300">
+                            <div class="h-56 bg-primary/10 flex items-center justify-center">
+                                <img src="coffee.png" alt="Project management" class="w-full h-full object-cover rounded mb-3 mx-auto">
+                            </div>
+                            <div class="p-5">
+                                <h3 class="font-bold text-gray-800 mb-2">Coffee Roast and Blend</h3>
+                                <p class="text-gray-500 text-sm mb-3">Starbucks &amp; ASU</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-gray-400">Issued: 2023</span>
+                                    <a href="#" class="text-primary text-sm font-medium">View <i class="fa fa-external-link ml-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 滚动指示器 -->
+                <div class="absolute left-0 right-0 bottom-0 flex justify-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-primary"></span>
+                    <span class="w-2 h-2 rounded-full bg-gray-300"></span>
+                </div>
+            </div>
+            
+            <!-- 志愿者和课外活动 -->
+            <div class="mt-20">
+                <h3 class="text-xl font-bold text-gray-800 mb-8 text-center en">Volunteer &amp; Extracurricular Activities</h3>
+                <h3 class="text-xl font-bold text-gray-800 mb-8 text-center zh hidden">志愿者和课外活动</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <div class="bg-white p-5 rounded-lg shadow hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-university text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 en">CTL Art Museum Volunteer</h4>
+                                <h4 class="font-semibold text-gray-800 zh hidden">陈天龙美术馆志愿者</h4>
+                                <p class="text-gray-500 text-sm">2022-2023</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm en">
+                            Assisted with exhibition setup, guided visitors, and helped with educational programs.
+                        </p>
+                        <p class="text-gray-600 text-sm zh hidden">
+                            协助展览布置、引导访客并参与教育项目。
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-lg shadow hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-users text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 en">French Club President</h4>
+                                <h4 class="font-semibold text-gray-800 zh hidden">法语俱乐部社长</h4>
+                                <p class="text-gray-500 text-sm">2023-2025</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm en">
+                            Organized cultural events, language workshops, and managed club activities.
+                        </p>
+                        <p class="text-gray-600 text-sm zh hidden">
+                            组织文化活动、语言工作坊并管理俱乐部事务。
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-lg shadow hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-heartbeat text-primary text-xl"></i>
+                            </div>
+                            <div>
+                              <h4 class="font-semibold text-gray-800 en">Wenzhou Marathon Fun Run</h4>
+                              <h4 class="font-semibold text-gray-800 zh hidden">温州马拉松欢乐跑</h4>
+                                <p class="text-gray-500 text-sm">2023</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm en">
+                            Participated in the marathon event to promote healthy living and community spirit.
+                        </p>
+                        <p class="text-gray-600 text-sm zh hidden">
+                            参与马拉松活动，倡导健康生活和社区精神。
+                        </p>
+                    </div>
+                  
+                    <div class="bg-white p-5 rounded-lg shadow hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-heartbeat text-primary text-xl"></i>
+                            </div>
+                            <div>
+                              <h4 class="font-semibold text-gray-800 en">MGM Day Volunteer</h4>
+                              <h4 class="font-semibold text-gray-800 zh hidden">MGM Day志願者</h4>
+                                <p class="text-gray-500 text-sm">2022</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm en">
+                            Participated in the campus cultural event to build relationship with professors and students.
+                        </p>
+                        <p class="text-gray-600 text-sm zh hidden">
+                            参与校园文化活动，与教授和学生建立关系。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品集 -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 en">Portfolio</h2>
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 zh hidden">作品集</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+   
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- 作品 1 -->
+                <div class="group">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <embed src="Digital Campaign.pdf" type="application/pdf" width="100%" height="400px">
+                        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <a href="#" class="bg-white text-primary px-4 py-2 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                <span class="en">View Project</span>
+                                <span class="zh hidden">查看项目</span>
+                                
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-1 en">Digital Marketing Multichannel Campaign</h3>
+                    <h3 class="font-bold text-gray-800 mb-1 zh hidden">数字营销多渠道 campaign</h3>
+                    <p class="text-gray-500 text-sm">Marketing Strategy</p>
+                </div>
+                
+                <!-- 作品 2 -->
+                <div class="group">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <embed src="web.pdf" type="application/pdf" width="100%" height="400px">
+                        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <a href="#" class="bg-white text-primary px-4 py-2 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                <span class="en">View Project</span>
+                                <span class="zh hidden">查看项目</span>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-1 en">Website Design</h3>
+                    <h3 class="font-bold text-gray-800 mb-1 zh hidden">网站设计</h3>
+                    <p class="text-gray-500 text-sm">UX/UI Design</p>
+                </div>
+                
+                <!-- 作品 3 -->
+                <div class="group">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <embed src="poster.pdf" type="application/pdf" width="100%" height="400px">
+                        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <a href="#" class="bg-white text-primary px-4 py-2 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                <span class="en">View Project</span>
+                                <span class="zh hidden">查看项目</span>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-1 en">Business Poster Design</h3>
+                    <h3 class="font-bold text-gray-800 mb-1 zh hidden">商业海报设计</h3>
+                    <p class="text-gray-500 text-sm">Graphic Design</p>
+                </div>
+                
+                <!-- 作品 4 -->
+                <div class="group">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <embed src="brand.pdf" type="application/pdf" width="100%" height="400px">
+                        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <a href="#" class="bg-white text-primary px-4 py-2 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                <span class="en">View Project</span>
+                                <span class="zh hidden">查看项目</span>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-1 en">Brand Design</h3>
+                    <h3 class="font-bold text-gray-800 mb-1 zh hidden">品牌设计</h3>
+                    <p class="text-gray-500 text-sm">Branding</p>
+                </div>
+                
+                <!-- 作品 5 -->
+                <div class="group">
+                    <div class="relative overflow-hidden rounded-xl mb-4">
+                        <embed src="bplan.pdf" type="application/pdf" width="100%" height="400px">
+                        <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <a href="#" class="bg-white text-primary px-4 py-2 rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                <span class="en">View Project</span>
+                                <span class="zh hidden">查看项目</span>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-1 en">Business Plan</h3>
+                    <h3 class="font-bold text-gray-800 mb-1 zh hidden">商业计划</h3>
+                    <p class="text-gray-500 text-sm">Strategic Planning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="py-20 bg-dark">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-white en">Contact Me</h2>
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-white zh hidden">联系我</h2>
+                <div class="w-20 h-1 bg-secondary mx-auto mt-4"></div>
+                <p class="mt-4 text-gray-300 max-w-2xl mx-auto en">
+                    Interested in working together? Fill out the form below with some info about your project, and I'll get back to you as soon as I can.
+                </p>
+                <p class="mt-4 text-gray-300 max-w-2xl mx-auto zh hidden">
+                    有合作意向？请在下方填写您的项目信息，我会尽快回复您。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-1 en">Name</label>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-1 zh hidden">姓名</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-white" placeholder="Your name">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1 en">Email</label>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1 zh hidden">邮箱</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-white" placeholder="Your email">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-1 en">Message</label>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-1 zh hidden">留言</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary text-white" placeholder="Your message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-6 rounded-lg transition-colors transform hover:-translate-y-1 duration-300">
+                            <span class="en">Send Message</span>
+                            <span class="zh hidden">发送消息</span>
+                        </button>
+                    </form>
+                </div>
+                
+                <div>
+                    <div class="bg-gray-800 rounded-xl p-8 h-full">
+                        <h3 class="text-xl font-bold mb-6 text-white en">Contact Information</h3>
+                        <h3 class="text-xl font-bold mb-6 text-white zh hidden">联系信息</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-envelope text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-300 mb-1 en">Email</h4>
+                                    <h4 class="font-medium text-gray-300 mb-1 zh hidden">邮箱</h4>
+                                    <p class="text-gray-400">1235872@wku.edu.cn</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-linkedin text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-300 mb-1 en">LinkedIn</h4>
+                                    <h4 class="font-medium text-gray-300 mb-1 zh hidden">领英</h4>
+                                    <p class="text-gray-400">linkedin.com/in/shiyulin</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-weixin text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-300 mb-1 en">WeChat</h4>
+                                    <h4 class="font-medium text-gray-300 mb-1 zh hidden">微信</h4>
+                                    <p class="text-gray-400">syuu524</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="font-medium text-gray-300 mb-4 en">Connect with me</h4>
+                            <h4 class="font-medium text-gray-300 mb-4 zh hidden">与我连接</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/40 transition-colors">
+                                    <i class="fa fa-linkedin text-secondary"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/40 transition-colors">
+                                    <i class="fa fa-instagram text-secondary"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/40 transition-colors">
+                                    <i class="fa fa-twitter text-secondary"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/40 transition-colors">
+                                    <i class="fa fa-weixin text-secondary"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12 pt-8 border-t border-gray-700">
+                            <h3 class="text-xl font-bold mb-4 text-white en">Let's Connect &amp; Collaborate!</h3>
+                            <h3 class="text-xl font-bold mb-4 text-white zh hidden">让我们连接与合作！</h3>
+                            <p class="text-gray-400 en">
+                                I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+                            </p>
+                            <p class="text-gray-400 zh hidden">
+                                我始终乐于讨论新项目、创意想法或参与您愿景的机会。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-gray-400 py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="mb-4 md:mb-0 en">© 2025 Shiyu Lin. All rights reserved.</p>
+                <p class="mb-4 md:mb-0 zh hidden">© 2025 林诗钰。保留所有权利。</p>
+                
+                <div class="flex space-x-6">
+                    <a href="#about" class="hover:text-white transition-colors en">About</a>
+                    <a href="#experience" class="hover:text-white transition-colors en">Experience</a>
+                    <a href="#portfolio" class="hover:text-white transition-colors en">Portfolio</a>
+                    <a href="#contact" class="hover:text-white transition-colors en">Contact</a>
+                    
+                    <a href="#about" class="hover:text-white transition-colors zh hidden">关于我</a>
+                    <a href="#experience" class="hover:text-white transition-colors zh hidden">经历</a>
+                    <a href="#portfolio" class="hover:text-white transition-colors zh hidden">作品集</a>
+                    <a href="#contact" class="hover:text-white transition-colors zh hidden">联系方式</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all z-50">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-white', 'shadow-md');
+                navbar.classList.remove('bg-transparent');
+                
+                // 改变导航链接颜色
+                document.querySelectorAll('#navbar a').forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-600');
+                });
+                
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+                navbar.classList.add('bg-transparent');
+                
+                // 恢复导航链接颜色
+                document.querySelectorAll('#navbar a').forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-gray-600');
+                });
+                
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // 经历详情展开/折叠
+        document.querySelectorAll('.toggle-details').forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.parentElement.querySelector('.experience-content');
+                const icon = this.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                
+                // 切换按钮文本
+                const textEn = this.querySelector('.en');
+                const textZh = this.querySelector('.zh');
+                
+                if (content.classList.contains('hidden')) {
+                    textEn.textContent = 'View Details';
+                    if (textZh) textZh.textContent = '查看详情';
+                } else {
+                    textEn.textContent = 'Hide Details';
+                    if (textZh) textZh.textContent = '隐藏详情';
+                }
+            });
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 关闭移动菜单（如果打开）
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 返回顶部
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 语言切换功能 - 确保所有内容正确切换
+        const langEnBtn = document.getElementById('lang-en');
+        const langZhBtn = document.getElementById('lang-zh');
+        const enElements = document.querySelectorAll('.en');
+        const zhElements = document.querySelectorAll('.zh');
+        
+        // 初始化页面显示英文
+        langEnBtn.classList.add('bg-primary', 'text-white');
+        langEnBtn.classList.remove('bg-gray-200', 'text-gray-600');
+        langZhBtn.classList.remove('bg-primary', 'text-white');
+        langZhBtn.classList.add('bg-gray-200', 'text-gray-600');
+        enElements.forEach(el => el.classList.remove('hidden'));
+        zhElements.forEach(el => el.classList.add('hidden'));
+        
+        langEnBtn.addEventListener('click', function() {
+            enElements.forEach(el => el.classList.remove('hidden'));
+            zhElements.forEach(el => el.classList.add('hidden'));
+            
+            langEnBtn.classList.add('bg-primary', 'text-white');
+            langEnBtn.classList.remove('bg-gray-200', 'text-gray-600');
+            
+            langZhBtn.classList.remove('bg-primary', 'text-white');
+            langZhBtn.classList.add('bg-gray-200', 'text-gray-600');
+        });
+        
+        langZhBtn.addEventListener('click', function() {
+            zhElements.forEach(el => el.classList.remove('hidden'));
+            enElements.forEach(el => el.classList.add('hidden'));
+            
+            langZhBtn.classList.add('bg-primary', 'text-white');
+            langZhBtn.classList.remove('bg-gray-200', 'text-gray-600');
+            
+            langEnBtn.classList.remove('bg-primary', 'text-white');
+            langEnBtn.classList.add('bg-gray-200', 'text-gray-600');
+        });
+    </script>
+
+
+
+
+    </body></html>
